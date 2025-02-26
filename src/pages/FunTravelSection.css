@@ -1,0 +1,74 @@
+
+  
+  .funtravel-section {
+    padding: 50px 20px;
+    background-color: #f9fcff; /* Light blue background */
+    text-align: center;
+  }
+  
+  .funtravel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .funtravel-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .funtravel-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .funtravel-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .funtravel-cards {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .funtravel-card {
+    flex: 1;
+    max-width: 30%;
+    min-width: 250px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .funtravel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .funtravel-icon {
+    width: 50px;
+    height: 50px;
+    /* margin-bottom: 15px; */
+    margin: auto;
+  }
+  
+  .funtravel-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .funtravel-card p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  

@@ -1,0 +1,19 @@
+{
+    "trips": [
+      {
+        "id": 1,
+        "location": "Paris",
+        "image": "https://source.unsplash.com/300x200/?paris",
+        "description": "Experience the city of love with stunning views and historic landmarks.",
+        "price": "$1200"
+      },
+      {
+        "id": 2,
+        "location": "Tokyo",
+        "image": "https://source.unsplash.com/300x200/?tokyo",
+        "description": "Explore the vibrant culture and futuristic technology in Tokyo.",
+        "price": "$1500"
+      }
+    ]
+  }
+  
