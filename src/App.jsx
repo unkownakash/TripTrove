@@ -18,7 +18,8 @@ import TripDetails from './pages/TripDetails';
 import Layout from './components/Layout';
 import AboutUs from './components/AboutUs';
 import Destination from './components/Destination';
-import DowryCalculator from './DowryCalculator';
+// import DowryCalculator from './DowryCalculator';
+import AdminPanel from './pages/AdminPanel';
 
 const App = () => {
   return  (
@@ -31,6 +32,7 @@ const App = () => {
       <Route path="/trip/:id" element={<TripDetails />} />
       {/* <Route path="/Home" element={<Home />} /> */}
       <Route path="/ContactUs" element={<ContactUs />} />
+      <Route path="/admin" element={<AdminPanel />} />
       <Route path="/AboutUs" element={<AboutUs />} />
       <Route path="/Destination" element={<Destination />} />
 

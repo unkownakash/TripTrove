@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap');
+
+.card-hover {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+}
+
+.card-hover__content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(17, 24, 39, 0.9);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover:hover .card-hover__content {
+  background-color: #f97316;
+}
+
+.card-hover__title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card-hover__title span {
+  color: #1f1d42;
+}
+
+.card-hover__text {
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.card-hover__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-hover:hover .card-hover__link {
+  opacity: 1;
+}
+
+.card-hover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .card-hover {
+    width: 90%;
+    height: auto;
+  }
+}

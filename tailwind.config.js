@@ -7,6 +7,9 @@ export default {
  
   theme: {
     extend: {
+      screens: {
+        'custom-lg': '900px', // Custom breakpoint at 900px
+      },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #FFD9B3, #FFE0C2, #FFF5D6)',
       },

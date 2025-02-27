@@ -77,6 +77,17 @@ app.delete("/api/trips/:id", async (req, res) => {
   }
 });
 
+app.get("/api/admin/trips", async (req, res) => {
+  // Logic to manage trips for admin
+  res.json({ message: "Admin trips route" });
+});
+
+app.get("/api/admin/users", async (req, res) => {
+  // Logic to manage users for admin
+  res.json({ message: "Admin users route" });
+});
+
 // Start Server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

@@ -114,8 +114,8 @@ const ContactUs = () => {
           </form>
         </div>
 
-        {/* Right Side - Animation */}
-        <div className="w-full md:w-2/4 flex justify-center mt-10 md:mt-0">
+        {/* Right Side - Animation (Hidden on small screens) */}
+        <div className="hidden md:flex w-full md:w-2/4 justify-center mt-10 md:mt-0">
           <Lottie options={defaultOptions} height={450} width={450} />
         </div>
       </div>
