@@ -2,12 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 // Database Connection
 const databaseConnect=require("./config/database")
@@ -16,7 +18,7 @@ databaseConnect()//yha par database connect kiya hua
 // import route
 const tourtravel = require("./routes/router")
 // Routes
-app.use("/api/",tourtravel)//yha par route map kiya hua// dout hai
+app.use("/api",tourtravel)//yha par route map kiya hua// dout hai
 
 
 const PORT = process.env.PORT || 5000;

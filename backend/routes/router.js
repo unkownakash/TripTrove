@@ -8,102 +8,64 @@ const app = express()
 
 const router = express.Router();
 
-// Get All Users (Admin Only)
-router.get("/users", authMiddleware, async (req, res) => {
-  try {
-      const users = await User.find().select("-password");
-      res.json(users);
-  } catch (err) {
-      res.status(500).json({ msg: "Server Error" });
+// Sample admin credentials
+const admin = {
+  email: "akash@gmail.com",
+  password: "akash123"
+};
+
+// Login route
+router.post("/admin/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (email === admin.email && password === admin.password) {
+    return res.json({ success: true, message: "Login successful" });
+  } else {
+    return res.json({ success: false, message: "Invalid email or password" });
   }
 });
 
-// Delete a User (Admin Only)
-router.delete("/users/:id", authMiddleware, async (req, res) => {
-  try {
-      const user = await User.findByIdAndDelete(req.params.id);
-      if (!user) return res.status(404).json({ msg: "User not found" });
-      res.json({ msg: "User deleted successfully" });
-  } catch (err) {
-      res.status(500).json({ msg: "Server Error" });
-  }
-});
-
-// Get All Trips (Admin Only)
-// router.get("/trips", authMiddleware, async (req, res) => {
-//   try {
-//       const trips = await Trip.find();
-//       res.json(trips);
-//   } catch (err) {
-//       res.status(500).json({ msg: "Server Error" });
-//   }
-// });
-
-// Delete a Trip (Admin Only)
-// router.delete("/trips/:id", authMiddleware, async (req, res) => {
-//   try {
-//       const trip = await Trip.findByIdAndDelete(req.params.id);
-//       if (!trip) return res.status(404).json({ msg: "Trip not found" });
-//       res.json({ msg: "Trip deleted successfully" });
-//   } catch (err) {
-//       res.status(500).json({ msg: "Server Error" });
-//   }
-// });
 
 // Signup Route
-router.post("/signup", async (req, res) => {
-    const { name, email, password } = req.body;
-    try {
-        let user = await User.findOne({ email });
-        if (user) return res.status(400).json({ msg: "User already exists" });
+// router.post("/signup", async (req, res) => {
+//     const { name, email, password } = req.body;
+//     try {
+//         let user = await User.findOne({ email });
+//         if (user) return res.status(400).json({ msg: "User already exists" });
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        user = new User({ name, email, password: hashedPassword });
+//         const hashedPassword = await bcrypt.hash(password, 10);
+//         user = new User({ name, email, password: hashedPassword });
 
-        await user.save();
-        res.status(201).json({ msg: "User created successfully" });
-    } catch (err) {
-        res.status(500).json({ msg: "Server error" });
-    }
-});
+//         await user.save();
+//         res.status(201).json({ msg: "User created successfully" });
+//     } catch (err) {
+//         res.status(500).json({ msg: "Server error" });
+//     }
+// });
 
 // Login Route
-router.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ msg: "Invalid credentials" });
+// router.post("/login", async (req, res) => {
+//     const { email, password } = req.body;
+//     try {
+//         const user = await User.findOne({ email });
+//         if (!user) return res.status(400).json({ msg: "Invalid credentials" });
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+//         const isMatch = await bcrypt.compare(password, user.password);
+//         if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-        res.json(
+//         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+//         res.json(
            
-            {  message:"succesfully login",
-                token , user: { id: user._id, name: user.name, email: user.email } }
+//             {  message:"succesfully login",
+//                 token , user: { id: user._id, name: user.name, email: user.email } }
             
-        );
-    } catch (err) {
-        res.status(500).json({ msg: "Server error" });
-    }
-});
+//         );
+//     } catch (err) {
+//         res.status(500).json({ msg: "Server error" });
+//     }
+// });
 
-// Protected Route Example
-router.get("/me", async (req, res) => {
-    try {
-        const token = req.header("x-auth-token");
-        if (!token) return res.status(401).json({ msg: "No token, authorization denied" });
 
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
-        if (!verified) return res.status(401).json({ msg: "Token verification failed" });
-
-        const user = await User.findById(verified.id).select("-password");
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ msg: "Server error" });
-    }
-});
 
 // Fetch all trips (with optional filters)
 router.get("/trips", async (req, res) => {
@@ -160,15 +122,6 @@ router.get("/trips", async (req, res) => {
     }
   });
 
-// Admin - Manage trips
-//   app.get("/api/admin/trips", async (req, res) => {
-//     // Logic to manage trips for admin
-//     res.json({ message: "Admin trips route" });
-//   });
-  // Admin - Manage users
-//   app.get("/api/admin/users", async (req, res) => {
-//     // Logic to manage users for admin
-//     res.json({ message: "Admin users route" });
-//   });
+
 
 module.exports = router;

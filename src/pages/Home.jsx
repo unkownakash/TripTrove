@@ -11,12 +11,14 @@ import ContactUs from "./ContactUs";
 import Footer from "../components/Footer";
 // import ShoppingCart from "../components/ShoppingCart";
 // import AdminDashboard from "../pages/AdminPanel";
+import AdminLogin from "./AdminLogin";
 
 const Home = () => {
  return(
   <>
   {/* hero shi nhi hai     */}
   {/* <ShoppingCart/> */}
+  {/* <AdminLogin/> */}
   <HeroSection/>
   <TravelSearch/> 
   {/* <AdminDashboard/> */}
